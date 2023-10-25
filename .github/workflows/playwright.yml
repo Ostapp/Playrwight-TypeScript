@@ -21,6 +21,11 @@ jobs:
       run: |
         npm install -D allure-commandline
         npx allure generate ./allure-results --clean
+    - name: Copy history folder
+      run: |
+        if [ -d "allure-report/history" ]; then
+          cp -r allure-report/history allure-results/
+        fi
     - name: Run Playwright tests
       run: npx playwright test
     - uses: actions/upload-artifact@v2
