@@ -18,11 +18,11 @@ jobs:
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
     - name: Install Allure Reports
-      run: npm install -D allure-commandline
+      run: |
+        npm install -D allure-commandline
+        npx allure generate ./allure-results --clean
     - name: Run Playwright tests
       run: npx playwright test
-    - name: Generate Allure Report
-      run: npx allure generate ./allure-results --clean -o ./allure-report
     - uses: actions/upload-artifact@v2
       if: always()
       with:
