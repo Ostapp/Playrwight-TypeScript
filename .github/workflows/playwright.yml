@@ -25,7 +25,8 @@ jobs:
         npx allure generate ./allure-results --clean
     - name: Run Playwright tests
       run: npx playwright test
-    - name: Generate Playwright report
+    - name: Generate Allure report
+      if: always()
       run: npx allure generate allure-results -o allure-report --clean
     - uses: actions/upload-artifact@v2
       if: always()
